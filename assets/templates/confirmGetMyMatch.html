@@ -1,0 +1,19 @@
+<ion-view title="Confirm: Get My Match">
+  <ion-content padding="true" style="background: url(https://s3.amazonaws.com/ionic-io-static/Uj0kXDwkSYiGAuIzrh47_starfield-1242x2208.jpg) no-repeat center;background-size:cover;" class="manual-remove-top-padding has-header" scroll="false">
+
+    <div ng-if="isLoading" id="loading">
+      <div>Loading...</div>
+    </div>
+
+    <form class="list">
+      <div class="spacer" style="width: 300px; height: 39px;"></div>
+      <div style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#EDF3F9;font-size:18px;">By pressing "Get My Match Now" you agree to be charged the per-use fee of $0.99 to use this service. </p>
+
+        <p style="color:#EDF3F9;font-size:18px;">This charge will appear as "Cosmic Match" on your iTunes or Google Wallet account.</p>
+      </div>
+    </form>
+    <div class="spacer" style="width: 300px; height: 18px;"></div>
+    <button ng-click="submit()" ng-disabled="isLoading" style="font-size:27px;" class="button button-energized button-block">Get My Match Now!</button>
+  </ion-content>
+</ion-view>

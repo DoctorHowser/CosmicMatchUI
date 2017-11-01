@@ -1,0 +1,16 @@
+<ion-view title="Saved Matches" hide-back-button="true" id="page7" ng-click="toggleReorder()">
+  <ion-content padding="true" style="background: url(img/3npcEeF1QDxNCFtGWOXf_starfield-1242x2208.jpg) no-repeat center;background-size:cover;" class="manual-remove-top-padding has-header">
+    <div id="savedMatches-markdown14" style="text-align:center;" class="show-list-numbers-and-dots">
+      <p style="color:#FFFFFF;font-size:15px;">View or delete saved matches</p>
+    </div>
+    <ion-list id="savedMatches-list1" show-delete="isDelete">
+      <ion-item class="energized" id="savedMatches-list-item8" ui-sref="tabsController.yourMatchResult()" ng-repeat="match in matches">{{match.name}} -- {{match.sign}}
+        <ion-delete-button class="ion-minus-circled" ng-click="promptDeleteMatch(match)"></ion-delete-button>
+      </ion-item>
+    </ion-list>
+    <div id="savedMatches-container6" ng-show="showDeletePrompt">
+      <button id="savedMatches-button44" ng-click="deleteMatch()" class="button button-positive button-block">Delete {{deletingMatch.name}}</button>
+      <button id="savedMatches-button45" ng-click="cancelDelete()" class="button button-positive button-block">Cancel</button>
+    </div>
+  </ion-content>
+</ion-view>

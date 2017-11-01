@@ -1,0 +1,26 @@
+<ion-view title="Confirm Your Profile" id="page28">
+  <ion-content padding="true" style="background: url(img/4bQP1p1oRkqznOnaPQIK_starfield-1242x2208.jpg) no-repeat center;background-size:cover;" class="has-header">
+    <div id="confirmYourProfile-markdown19" class="show-list-numbers-and-dots"></div>
+    <div id="confirmYourProfile-markdown23" style="text-align:center;" class="show-list-numbers-and-dots">
+      <p style="color:#FCF8F8;font-size:21px;">Please review your profile!</p>
+    </div>
+    <div class="list card" id="confirmYourProfile-card21">
+      <ion-item class="item-icon-left energized center text-center" id="confirmYourProfile-list-item9">
+        <i class="icon ion-ios-heart"></i>Cosmic Match User</ion-item>
+      <div id="confirmYourProfile-markdown18" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#000000;">Birthdate: {{user.month}}/{{user.day}}/{{user.year}}</p>
+
+        <p style="color:#000000;">Birthtime: {{user.hour}}:{{user.minute}}
+        </p>
+
+        <p style="color:#000000;">{{user.location}} {{user.timezone}}
+        </p>
+
+        <p style="color:#000000;">(Lat: {{user.lat}}) (Lon: {{user.lon}})</p>
+      </div>
+    </div>
+    <a ui-sref="tabsController.createANewMatch_tab5()" id="confirmYourProfile-button34" style="font-size:20px;" class="button button-energized button-block">Save!</a>
+    <a ui-sref="tabsController.setUpMyProfile()" id="confirmYourProfile-button41" style="font-size:14px;border-radius:0px 0px 0px 0px;" class="button button-positive button-small button-block">Edit Birth Time Info</a>
+    <a ui-sref="tabsController.myProfileLocation()" id="confirmYourProfile-button43" style="font-size:14px;" class="button button-positive button-small button-block">Edit Birth Location Info</a>
+  </ion-content>
+</ion-view>

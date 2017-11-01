@@ -1,0 +1,21 @@
+<ion-view title="Match Birth Location" hide-back-button="true" id="page24">
+  <ion-nav-buttons side="left" scroll="false" class="has-header">
+    <button class="button button-icon icon ion-ios-arrow-back" ng-click="goBack()"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" style="background: url(img/9kLVsULiSrivySY1rHxs_starfield-1242x2208.jpg) no-repeat center;background-size:cover;" scroll="false" class="has-header">
+    <div id="matchBirthLocation-markdown31" style="text-align:center;" class="show-list-numbers-and-dots">
+      <p style="color:#FFFFFF;font-size:19px;">Input the birth location of your new match.</p>
+    </div>
+    <form id="matchBirthLocation-form9" class="list">
+      <label class="item item-input" id="matchBirthLocation-input18">
+        <span class="input-label">Enter the City, State, or Zip</span>
+        <input type="text" placeholder="" ng-model="search.location">
+      </label>
+    </form>
+    <ui-gmap-google-map ng-if="map.center" center="map.center" zoom="map.zoom" options="map.options" style="display:block;position:relative;width:100%;height:180px;">
+      <ui-gmap-marker coords="map.marker.coords" idkey="map.marker.id" options="map.marker.options"></ui-gmap-marker>
+    </ui-gmap-google-map>
+    <button id="matchBirthLocation-button42" ng-click="getGeocode()" style="font-size:17px;" class="button button-positive button-block">Lookup Location</button>
+    <a ui-sref="tabsController.confirmYourMatchData()" id="matchBirthLocation-button21" ng-click="submit()" ng-disabled="!map.center.latitude" style="font-weight:500;font-size:22px;" class="button button-energized button-block">Review</a>
+  </ion-content>
+</ion-view>

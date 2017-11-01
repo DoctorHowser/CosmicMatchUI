@@ -1,0 +1,25 @@
+<ion-view title="My Profile" id="page6">
+  <ion-nav-buttons side="left" scroll="false" class="has-header">
+    <button class="button button-icon icon ion-ios-arrow-back"></button>
+  </ion-nav-buttons>
+  <ion-content padding="false" style="background: url(img/Uj0kXDwkSYiGAuIzrh47_starfield-1242x2208.jpg) no-repeat center;background-size:cover;" scroll="false" class="has-header">
+    <div class="list card" id="myProfile-card23">
+      <ion-item class="item-avatar" id="myProfile-list-item28">
+        <h2>Comic Match User</h2>
+      </ion-item>
+      <div id="myProfile-markdown30" style="text-align:center;" class="show-list-numbers-and-dots">
+        <p style="color:#000000;">Birthdate: {{user.month}}/{{user.day}}/{{user.year}}</p>
+
+        <p style="color:#000000;">Birthtime: {{user.hour}}:{{user.minute}}
+        </p>
+
+        <p style="color:#000000;">{{user.location}} {{user.timezone}}
+        </p>
+
+        <p style="color:#000000;">(Lat: {{user.lat}}) (Lon: {{user.lon}})</p>
+      </div>
+      <a ui-sref="tabsController.setUpMyProfile()" id="myProfile-button31" style="border-radius:-1px -1px -1px -1px;" class="button button-positive button-block">Edit Info</a>
+      <button id="myProfile-button32" class="button button-positive button-block">Logout</button>
+    </div>
+  </ion-content>
+</ion-view>

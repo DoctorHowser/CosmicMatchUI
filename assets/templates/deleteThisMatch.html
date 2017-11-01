@@ -1,0 +1,20 @@
+<ion-view title="Delete This Match?" id="page25">
+  <ion-content padding="true" style="background: url(img/zzSJrxHsQHiiQZkiZIVj_starfield-1242x2208.jpg) no-repeat center;background-size:cover;" scroll="false" class="has-header">
+    <div>
+      <figure>
+        <img src="img/m75ArEowShef5k1nRAdt_blankheart.png" style="display: block; width: 50%; height: auto; margin-left: auto; margin-right: auto;">
+        <figcaption style="text-align:center;" class="show-list-numbers-and-dots">
+          <span>{{match.percentage * 100 | number:0}}
+            <sup>%</sup>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+    <div id="deleteThisMatch-markdown17" style="text-align:center;" class="show-list-numbers-and-dots">
+      <p style="color:#FFFFFF;font-size:19px;">Are you sure you want to delete this result? Deletion is permanent and cannot be undone.</p>
+    </div>
+    <div class="spacer" style="width: 300px; height: 25px;"></div>
+    <a ui-sref="tabsController.matchDeleted()" id="deleteThisMatch-button26" class="button button-energized button-block">I'm sure. Delete this Match.</a>
+    <a ui-sref="tabsController.matchSaved()" id="deleteThisMatch-button27" class="button button-positive button-block">No, I'll save this Match for now.</a>
+  </ion-content>
+</ion-view>
