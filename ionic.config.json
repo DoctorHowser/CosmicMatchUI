@@ -3,7 +3,8 @@
   "app_id": "5d0113a3",
   "type": "ionic1",
   "integrations": {
-    "gulp": {}
+    "gulp": {},
+    "cordova": {}
   },
   "gulpStartupTasks": [
     "sass",
