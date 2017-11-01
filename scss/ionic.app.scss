@@ -1,23 +1,207 @@
-/*
-To customize the look and feel of Ionic, you can override the variables
-in ionic's _variables.scss file.
-
-For example, you might change some of the default colors:
-
-$light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
-$dark:                            #444 !default;
-*/
-
-// The path for our ionicons font files, relative to the built CSS in www/css
+$positive: #2B4F98;
+$calm: #12648C;
+$balanced: #1AB3BC;
+$assertive: #9A3AEF;
+$royal: #6725B5;
+$dark: #000000;
+$energized: #F719E2;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
+@import "../www/lib/ionic/scss";
+figure {
+	position: relative}
+figcaption {
+	position: absolute;
+	width: 200px;
+	line-height: 150px;
+	text-align: center;
+	left: 55px;
+	top: -24px;
+	font-size: 60px;
+	text-shadow: 0 0 1px white;
+	font-weight: 300;
+}
 
-// Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+sup {
+	line-height: 0;
+}
+
+.rotate {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	//   overflow: hidden;
+}
+
+ul {
+	margin: 0;
+	list-style: none;
+	font-size: 4vw;
+	transform-style: preserve-3d;
+	animation: three-dimensions-circle 30s linear infinite;
+}
+
+li {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 24px;
+}
+
+@for $i from 1 through 12 {
+	li: nth-child(# {
+		$i}
+	) {
+		transform: translate(-50%, -50%) rotate(# {
+			$i * 30 - 30}
+		deg) translateY(-260px) rotateX(90deg);
+	}
+	
+}
+@keyframes three-dimensions-circle {
+	0% {
+		transform: rotateX(-100deg) rotate(0);
+	}
+	
+	100% {
+		transform: rotateX(-100deg) rotate(-360deg);
+	}
+	
+}
+.starfield {
+	width: 100%;
+	height: 100%;
+	background-size: cover !important;
+}
+
+.heart {
+	position: relative;
+	width: 200px;
+	height: 180px;
+	float: left;
+}
+
+.heart: before,
+.heart: after {
+	position: absolute;
+	content: "";
+	left: 50px;
+	top: 0;
+	width: 50px;
+	height: 80px;
+	background: #fc2e5a;
+	-moz-border-radius: 50px 50px 0 0;
+	border-radius: 50px 50px 0 0;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-transform-origin: 0 100%;
+	-moz-transform-origin: 0 100%;
+	-ms-transform-origin: 0 100%;
+	-o-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+}
+
+.heart: after {
+	left: 0;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	-ms-transform-origin: 100% 100%;
+	-o-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(1);
+	}
+	
+	50% {
+		transform: scale(1.15);
+	}
+	
+	100% {
+		transform: scale(1);
+	}
+	
+}
+.pulse {
+	animation-name: pulse;
+	animation-duration: 1s;
+}
+
+.animated {
+	animation-duration: 2.5s;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+}
+
+// .loading-container {
+	//     width: 100%;
+	height: 100%;
+	//}
+#loading {
+	z-index: 9;
+	height: 100%;
+	width: 100%;
+	left: 0%;
+	top: 0%;
+	position: absolute;
+	background-image: url(http: //gph.to/2x3embx);
+	background-color: rgba(214, 192, 213, 0.5);
+	background-size: contain;
+	background-repeat: no-repeat;
+	div {
+		margin-top: 150px;
+		margin-left: 140px;
+	}
+	
+}
+// This code is required for Angular Google Maps to funciton
+ui-gmap-google-map {
+	height: 100%;
+	width: 100%;
+	display: block;
+	.angular-google-map {
+		height: 100%;
+		.angular-google-map-container {
+			height: 100%;
+		}
+		
+	}
+}
+ion-view,.pane,.view {
+	background-color: #2C1A87;
+}
+
+body {
+	color: #FFFFFF;
+}
+
+body.platform-ios {
+	font-family: Raleway, sans-serif;
+}
+
+.ionic-body.platform-ios {
+	font-family: Raleway, sans-serif;
+}
+
+body.platform-android {
+	font-family: Raleway, sans-serif;
+}
+
+.ionic-body.platform-android {
+	font-family: Raleway, sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,.tab-item,input,button,select,textarea {
+	font-family: inherit;
+}
 
