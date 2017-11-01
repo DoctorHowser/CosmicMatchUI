@@ -11,7 +11,7 @@ gulp.task('default', ['build', 'sass']);
 
 gulp.task('build', function() {
   return gulp.src('assets/**')
-    .pipe( gulp.dest('www') );
+    .pipe( gulp.dest('./www') );
 });
 
 
