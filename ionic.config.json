@@ -2,6 +2,17 @@
   "name": "CosmicMatchUI",
   "app_id": "5d0113a3",
   "type": "ionic1",
-  "integrations": {},
-  "gulpStartupTasks": ["sass", "watch"]
+  "integrations": {
+    "gulp": {}
+  },
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
 }
