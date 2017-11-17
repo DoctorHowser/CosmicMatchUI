@@ -8,6 +8,8 @@ var paths = {
   sass: ['./scss/**/*.scss']
 };
 
+gulp.task('build', 'default')
+
 gulp.task('default', ['buildJS', 'sass', 'copyAssets']);
 
 gulp.task('buildJS', function() {
