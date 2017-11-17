@@ -2,15 +2,22 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var cleanCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
+var browserify = require('gulp-browserify')
 
 var paths = {
   sass: ['./scss/**/*.scss']
 };
 
-gulp.task('default', ['build', 'sass']);
+gulp.task('default', ['buildJS', 'sass', 'copyAssets']);
 
-gulp.task('build', function() {
-  return gulp.src('assets/**')
+gulp.task('buildJS', function() {
+  return gulp.src('assets/**/*.js')
+  .pipe(browserify())
+    .pipe( gulp.dest('./www') );
+});
+
+gulp.task('copyAssets', function() {
+  return gulp.src('assets/**/*.html')
     .pipe( gulp.dest('./www') );
 });
 

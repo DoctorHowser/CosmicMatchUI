@@ -88,6 +88,10 @@
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.1" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="365181157239884" />
+        <variable name="APP_NAME" value="COSMICMATCH" />
+    </plugin>
     <plugin name="cordova-plugin-safariviewcontroller" spec="^1.4.7" />
     <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
         <variable name="URL_SCHEME" value="{com.astro.cosmicmatch}" />

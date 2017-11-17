@@ -5,6 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+
+var Auth0Cordova = require('@auth0/cordova');
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services','uiGmapgoogle-maps','googlemaps.init',])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
@@ -26,6 +28,12 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    function handleUrl(url) {
+      Auth0Cordova.onRedirectUri(url);
+    }
+
+    window.handleOpenURL = handleUrl;
   });
 })
 
