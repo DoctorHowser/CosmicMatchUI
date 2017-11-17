@@ -19,7 +19,7 @@ gulp.task('buildJS', function() {
 });
 
 gulp.task('copyAssets', function() {
-  return gulp.src('assets/**/*.html')
+  return gulp.src(['./assets/**/*', "!assets/**/*.js"])
     .pipe( gulp.dest('./www') );
 });
 
