@@ -94,9 +94,6 @@
     </plugin>
     <plugin name="cordova-plugin-safariviewcontroller" spec="^1.4.7" />
     <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
-        <variable name="URL_SCHEME" value="{com.astro.cosmicmatch}" />
-        <variable name="ANDROID_SCHEME" value="{com.astro.cosmicmatch}" />
-        <variable name="ANDROID_HOST" value="cosmicmatch.auth0.com" />
-        <variable name="ANDROID_PATHPREFIX" value="/cordova/{com.astro.cosmicmatch}/callback" />
+        <variable name="URL_SCHEME" value="com.astro.cosmicmatch" />
     </plugin>
 </widget>
