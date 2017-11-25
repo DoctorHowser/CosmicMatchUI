@@ -39,15 +39,12 @@
       "cordova-plugin-console": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-safariviewcontroller": {},
-      "cordova-plugin-customurlscheme": {
-        "URL_SCHEME": "{com.astro.cosmicmatch}",
-        "ANDROID_SCHEME": "{com.astro.cosmicmatch}",
-        "ANDROID_HOST": "cosmicmatch.auth0.com",
-        "ANDROID_PATHPREFIX": "/cordova/{com.astro.cosmicmatch}/callback"
-      },
       "cordova-plugin-facebook4": {
         "APP_ID": "365181157239884",
         "APP_NAME": "COSMICMATCH"
+      },
+      "cordova-plugin-customurlscheme": {
+        "URL_SCHEME": "com.astro.cosmicmatch"
       }
     },
     "platforms": [
