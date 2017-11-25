@@ -9800,18 +9800,21 @@ a.button {
   transition-duration: 0s; }
 
 figure {
-  position: relative; }
-
-figcaption {
-  position: absolute;
-  width: 200px;
-  line-height: 150px;
+  position: relative;
   text-align: center;
-  left: 55px;
-  top: -24px;
+  height: 33%; 
+}
+
+.centered {
+  text-align: center;
   font-size: 60px;
   text-shadow: 0 0 1px white;
-  font-weight: 300; }
+  font-weight: 300;
+  position: absolute;
+  top: 30%;
+  left: 36%;
+  transform: translate(-50%, -50%);
+}
 
 sup {
   line-height: 0; }
@@ -9823,6 +9826,10 @@ sup {
 .tour-spacer {
   width: 100%;
   height: 60%;
+}
+
+.item-stacked-label {
+  background-color: #fff;
 }
 
 .rotate {
