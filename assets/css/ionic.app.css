@@ -9816,6 +9816,15 @@ figcaption {
 sup {
   line-height: 0; }
 
+.tour-button {
+  max-height: 250px;
+  height: 40%;
+}
+.tour-spacer {
+  width: 100%;
+  height: 60%;
+}
+
 .rotate {
   display: flex;
   justify-content: center;
