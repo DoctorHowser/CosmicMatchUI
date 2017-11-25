@@ -8,18 +8,18 @@
     </div>
     <form id="setUpMyProfile-form5" class="list">
       <div class="spacer" style="width: 300px; height: 31px;"></div>
-      <label class="item item-input" id="setUpMyProfile-input12">
+      <label class="item item-input item-floating-label" id="setUpMyProfile-input12">
         <span class="input-label">Birthdate</span>
-        <input type="date" placeholder="MM/DD/YYYY" ng-model="search.birthDate">
+        <input placeholder="Birthdate" type="date" placeholder="MM/DD/YYYY" ng-model="search.birthDate">
       </label>
       <div class="spacer" style="width: 300px; height: 26px;"></div>
-      <label class="item item-input" id="setUpMyProfile-input14">
+      <label class="item item-input item-floating-label" id="setUpMyProfile-input14">
         <span class="input-label">Birthtime</span>
         <input type="time" placeholder="HH:MM AM/PM" ng-model="search.birthTime">
       </label>
     </form>
     <form id="setUpMyProfile-form12" class="list">
-      <label ng-if="false" class="item item-input item-select">
+      <label ng-if="false" class="item item-input item-select item-floating-label">
         <span class="input-label">Time Zone</span>
         <select ng-options="key as key for (key, value) in options" ng-model="search.timeZone"></select>
       </label>

@@ -7,9 +7,9 @@
       <p style="color:#FFFFFF;font-size:19px;">Input the birth location of your new match.</p>
     </div>
     <form id="matchBirthLocation-form9" class="list">
-      <label class="item item-input" id="matchBirthLocation-input18">
-        <span class="input-label">Enter the City, State, or Zip</span>
-        <input type="text" placeholder="" ng-model="search.location">
+      <label class="item item-input item-floating-label" id="matchBirthLocation-input18">
+        <span class="input-label">City, State, or Zip</span>
+        <input type="text" placeholder="New York" ng-model="search.location">
       </label>
     </form>
     <ui-gmap-google-map ng-if="map.center" center="map.center" zoom="map.zoom" options="map.options" style="display:block;position:relative;width:100%;height:180px;">
