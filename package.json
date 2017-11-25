@@ -1,7 +1,7 @@
 {
   "name": "CosmicMatchUI",
   "version": "0.0.1",
-  "description": "An Ionic project",
+  "description": "Cosmic Match!",
   "devDependencies": {
     "@ionic/app-scripts": "^3.0.1",
     "gulp": "^3.5.6",
