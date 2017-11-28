@@ -17,7 +17,7 @@
     "@auth0/cordova": "^0.2.0",
     "auth0-js": "^8.11.3",
     "browserify": "^14.5.0",
-    "cordova-ios": "4.5.3",
+    "cordova-ios": "^4.5.3",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-customurlscheme": "^4.3.0",
     "cordova-plugin-device": "^1.1.4",

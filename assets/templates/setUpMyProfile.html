@@ -6,7 +6,7 @@
     <div id="setUpMyProfile-markdown20" style="text-align:center;" class="show-list-numbers-and-dots">
       <p style="color:#FFFFFF;font-size:19px;">Input your date and time of birth. If you don't know the time, use 6:00 am.</p>
     </div>
-    <form id="setUpMyProfile-form5" class="list">
+    <form id="setUpMyProfile-form5" class="list" ng-submit="submit()">
       <div class="spacer" style="width: 300px; height: 31px;"></div>
       <label class="item item-input item-stacked-label" id="setUpMyProfile-input12">
         <span class="input-label">Birthdate</span>
@@ -17,6 +17,7 @@
         <span class="input-label">Birthtime</span>
         <input type="time" placeholder="HH:MM AM/PM" ng-model="search.birthTime">
       </label>
+      <input type="submit" style="visibility: hidden" />      
     </form>
     <form id="setUpMyProfile-form12" class="list">
       <label ng-if="false" class="item item-input item-select item-stacked-label">

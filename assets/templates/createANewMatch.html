@@ -3,7 +3,7 @@
     <div id="createANewMatch-markdown29" style="text-align:center;" class="show-list-numbers-and-dots">
       <p style="color:#FFFFFF;font-size:19px;">Input the date and time of birth of your match. If you don't know the time, use 6:00 am.</p>
     </div>
-    <form id="createANewMatch-form8" class="list">
+    <form id="createANewMatch-form8" class="list" ng-submit="submit()">
       <div class="spacer" style="width: 300px; height: 31px;"></div>
       <label class="item item-input item-stacked-label" id="createANewMatch-input19">
         <span class="input-label">Name</span>
@@ -19,6 +19,7 @@
         <span class="input-label">Birthtime</span>
         <input type="time" placeholder="HH:MM AM/PM" ng-model="search.birthTime">
       </label>
+      <input type="submit" style="visibility: hidden" />      
     </form>
     <form id="createANewMatch-form13" class="list">
       <label ng-if="false" class="item item-input item-select">
