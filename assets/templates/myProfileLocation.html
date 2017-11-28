@@ -6,10 +6,11 @@
     <div style="text-align:center;" class="show-list-numbers-and-dots">
       <p style="color:#FFFFFF;font-size:19px;">Input your birth location.</p>
     </div>
-    <form class="list">
+    <form class="list" ng-submit="submit()">
       <label class="item item-input item-stacked-label">
         <span class="input-label">City, State, or Zip</span>
         <input type="text" placeholder="New York" ng-model="search.location">
+        <input type="submit" style="visibility: hidden" />      
       </label>
     </form>
     <ui-gmap-google-map ng-if="map.center" center="map.center" zoom="map.zoom" options="map.options" style="display:block;position:relative;width:100%;height:200px;">
