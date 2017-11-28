@@ -32,7 +32,6 @@
   },
   "cordova": {
     "plugins": {
-      "ionic-plugin-keyboard": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
@@ -47,7 +46,8 @@
       "cordova-plugin-customurlscheme": {
         "URL_SCHEME": "com.astro.cosmicmatch"
       },
-      "cordova-plugin-keyboard": {}
+      "cordova-plugin-keyboard": {},
+      "ionic-plugin-keyboard": {}
     },
     "platforms": [
       "ios"

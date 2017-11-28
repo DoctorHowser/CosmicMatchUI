@@ -95,6 +95,6 @@
     <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
         <variable name="URL_SCHEME" value="com.astro.cosmicmatch" />
     </plugin>
-    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
+    <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
 </widget>
