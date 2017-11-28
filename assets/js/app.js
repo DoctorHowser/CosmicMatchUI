@@ -21,8 +21,10 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
-      window.cordova.plugins.Keyboard.disableScroll(true);
+      setTimeout(function(){
+        window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+        window.cordova.plugins.Keyboard.disableScroll(true);
+      }, 0)
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
