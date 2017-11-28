@@ -31,7 +31,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
         StatusBar.styleDefault();
       }
   
-    }, 0)
+    }, 3000)
     
 
     function handleUrl(url) {
