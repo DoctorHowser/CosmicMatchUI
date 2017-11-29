@@ -10,9 +10,9 @@ var Auth0Cordova = require('@auth0/cordova');
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services','uiGmapgoogle-maps','googlemaps.init',])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
-    $ionicConfigProvider.backButton.text('').previousTitleText(false);
-
+  $ionicConfigProvider.backButton.text('').previousTitleText(false);
   $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**']);
+  $ionicConfigProvider.tabs.position('bottom');
 
 })
 
