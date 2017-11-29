@@ -9,10 +9,12 @@
     <form id="setUpMyProfile-form5" class="list" ng-submit="submit()">
       <div class="spacer" style="width: 300px; height: 31px;"></div>
       <label class="item item-input" id="setUpMyProfile-input12">
-        <input type="date" placeholder="Birthdate" ng-model="search.birthDate">
+        <span class="input-label" ng-if="!search.birthDate">Birthdate</span>
+        <input type="date" placeholder="MM/DD/YYYY" ng-model="search.birthDate">
       </label>
       <div class="spacer" style="width: 300px; height: 26px;"></div>
       <label class="item item-input" id="setUpMyProfile-input14">
+          <span class="input-label" ng-if="!search.birthTime">Birthtime</span>          
         <input type="time" placeholder="Birthtime" ng-model="search.birthTime">
       </label>
       <input type="submit" />      
