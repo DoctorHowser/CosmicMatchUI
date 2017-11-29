@@ -5,28 +5,25 @@
     </div>
     <form id="createANewMatch-form8" class="list" ng-submit="submit()">
       <div class="spacer" style="width: 300px; height: 31px;"></div>
-      <label class="item item-input item-stacked-label" id="createANewMatch-input19">
-        <span class="input-label">Name</span>
-        <input type="text" placeholder="">
+      <label class="item item-input" id="createANewMatch-input19">
+        <input type="text" placeholder="Name">
       </label>
       <div class="spacer" style="width: 300px; height: 24px;"></div>
-      <label class="item item-input item-stacked-label" id="createANewMatch-input15">
-        <span class="input-label">Birthdate</span>
-        <input type="date" placeholder="MM/DD/YYYY" ng-model="search.birthDate">
+      <label class="item item-input" id="createANewMatch-input15">
+        <input type="date" placeholder="Birthdate" ng-model="search.birthDate">
       </label>
       <div class="spacer" style="width: 300px; height: 26px;"></div>
-      <label class="item item-input item-stacked-label" id="createANewMatch-input16">
-        <span class="input-label">Birthtime</span>
-        <input type="time" placeholder="HH:MM AM/PM" ng-model="search.birthTime">
+      <label class="item item-input" id="createANewMatch-input16">
+        <input type="time" placeholder="Birthtime" ng-model="search.birthTime">
       </label>
       <input type="submit" style="visibility: hidden" />      
     </form>
-    <form id="createANewMatch-form13" class="list">
+    <!-- <form id="createANewMatch-form13" class="list">
       <label ng-if="false" class="item item-input item-select">
         <span class="input-label">Time Zone</span>
         <select class="item-select" ng-model="search.timeZone" ng-options="key as key for (key, value) in options"></select>
       </label>
-    </form>
+    </form> -->
     <a ui-sref="tabsController.matchBirthLocation()" id="createANewMatch-button20" ng-click="submit()" ng-disabled="!search.birthDate || !search.birthTime" style="font-size:20px;" class="button button-energized button-block">Next</a>
   </ion-content>
 </ion-view>
