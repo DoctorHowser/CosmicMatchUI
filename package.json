@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@auth0/cordova": "^0.2.0",
+    "@ionic-native/keyboard": "^4.4.2",
     "auth0-js": "^8.11.3",
     "browserify": "^14.5.0",
     "cordova-ios": "^4.5.3",
@@ -23,6 +24,7 @@
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-facebook4": "^1.9.1",
     "cordova-plugin-inappbrowser": "^1.7.1",
+    "cordova-plugin-keyboard": "^1.2.0",
     "cordova-plugin-safariviewcontroller": "^1.4.7",
     "cordova-plugin-splashscreen": "^4.0.3",
     "cordova-plugin-statusbar": "^2.2.1",
@@ -31,7 +33,6 @@
   },
   "cordova": {
     "plugins": {
-      "ionic-plugin-keyboard": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
@@ -45,7 +46,9 @@
       },
       "cordova-plugin-customurlscheme": {
         "URL_SCHEME": "com.astro.cosmicmatch"
-      }
+      },
+      "cordova-plugin-keyboard": {},
+      "ionic-plugin-keyboard": {}
     },
     "platforms": [
       "ios"
