@@ -199,7 +199,6 @@ angular.module('app.services', [])
     }
 
     function login() {
-        window.alert(location.href);
     var client = new Auth0Cordova(auth0Config);
 
     var options = {
