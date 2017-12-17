@@ -124,7 +124,7 @@ angular.module('app.services', [])
     
 }])
 
-.service('MatchResultService',  ['$http', '$q', function($http, $q){
+.service('MatchResultService',  ['$http', '$q',  function($http, $q){
     
     let cache = {}
     
@@ -155,7 +155,7 @@ angular.module('app.services', [])
     
 }])
 
-.factory('Auth', ['$rootScope', function($rootScope) {
+.factory('Auth', ['$rootScope', '$ionicPopup', function($rootScope, $ionicPopup) {
     
     var Auth0Cordova = require('@auth0/cordova');
     var auth0 = require('auth0-js');
@@ -199,6 +199,13 @@ angular.module('app.services', [])
     }
 
     function login() {
+        $ionicPopup.alert({
+            title: 'href',
+            template: location.href
+          }).then(function(res){
+              console.log('thanks')
+          })
+          
     var client = new Auth0Cordova(auth0Config);
 
     var options = {
