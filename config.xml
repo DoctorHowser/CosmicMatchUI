@@ -92,11 +92,13 @@
         <variable name="APP_ID" value="365181157239884" />
         <variable name="APP_NAME" value="COSMICMATCH" />
     </plugin>
-    <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
-        <variable name="URL_SCHEME" value="com.astro.cosmicmatch" />
-    </plugin>
     <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <preference name="AndroidLaunchMode" value="singleInstance" />
     <plugin name="cordova-plugin-background-mode" spec="git+https://github.com/katzer/cordova-plugin-background-mode.git" />
+    <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
+        <variable name="URL_SCHEME" value="com.astro.cosmicmatch" />
+        <variable name="ANDROID_SCHEME" value="com.astro.cosmicmatch" />
+        <variable name="ANDROID_HOST" value="cosmicmatch.auth0.com" />
+        <variable name="ANDROID_PATHPREFIX" value="/cordova/com.astro.cosmicmatch/callback" />
+    </plugin>
 </widget>

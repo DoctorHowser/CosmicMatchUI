@@ -44,11 +44,14 @@
         "APP_ID": "365181157239884",
         "APP_NAME": "COSMICMATCH"
       },
-      "cordova-plugin-customurlscheme": {
-        "URL_SCHEME": "com.astro.cosmicmatch"
-      },
       "cordova-plugin-keyboard": {},
-      "ionic-plugin-keyboard": {}
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-customurlscheme": {
+        "URL_SCHEME": "com.astro.cosmicmatch",
+        "ANDROID_SCHEME": "com.astro.cosmicmatch",
+        "ANDROID_HOST": "cosmicmatch.auth0.com",
+        "ANDROID_PATHPREFIX": "/cordova/com.astro.cosmicmatch/callback"
+      }
     },
     "platforms": [
       "ios"
