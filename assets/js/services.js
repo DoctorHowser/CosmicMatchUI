@@ -164,7 +164,7 @@ angular.module('app.services', [])
     var auth0Config = {
         clientId: 'Snr3F4W4r7RWJza26gkG7EnikNVxGqJd',
         domain: 'cosmicmatch.auth0.com',
-        callbackURL: 'com.astro.cosmicmatch://cosmicmatch.auth0.com/cordova/com.astro.cosmicmatch/callback',
+        callbackURL: locaction.href,
         packageIdentifier: 'com.astro.cosmicmatch'
     };
 
@@ -205,7 +205,7 @@ angular.module('app.services', [])
           }).then(function(res){
               console.log('thanks')
           })
-          
+
     var client = new Auth0Cordova(auth0Config);
 
     var options = {
