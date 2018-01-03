@@ -7,6 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 
 var Auth0Cordova = require('@auth0/cordova');
+require('lodash')
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services','uiGmapgoogle-maps','googlemaps.init',])
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
@@ -17,9 +18,17 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 })
 
 .run(function($ionicPlatform) {
+  console.log('running app!')
   $ionicPlatform.ready(function() {
+    console.log('running ionic platform')
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    function handleUrl(url) {
+      Auth0Cordova.onRedirectUri(url);
+    }
+
+    window.handleOpenURL = handleUrl;
+    
     setTimeout(function(){
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       
@@ -34,11 +43,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
     }, 3000)
     
 
-    function handleUrl(url) {
-      Auth0Cordova.onRedirectUri(url);
-    }
-
-    window.handleOpenURL = handleUrl;
+    
   });
 })
 

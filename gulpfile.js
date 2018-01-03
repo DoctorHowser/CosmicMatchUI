@@ -10,16 +10,16 @@ var paths = {
 
 gulp.task('build', ['default'])
 
-gulp.task('default', ['buildJS', 'sass', 'copyAssets']);
+gulp.task('default', ['sass', 'copyAssets']);
 
-gulp.task('buildJS', function() {
-  return gulp.src('assets/**/*.js')
-  .pipe(browserify())
-    .pipe( gulp.dest('./www') );
-});
+// gulp.task('buildJS', function() {
+//   return gulp.src('assets/**/*.js')
+//   .pipe(browserify())
+//   .pipe( gulp.dest('./www') );
+// });
 
 gulp.task('copyAssets', function() {
-  return gulp.src(['./assets/**/*', "!assets/**/*.js"])
+  return gulp.src(['./assets/**/*'])
     .pipe( gulp.dest('./www') );
 });
 
