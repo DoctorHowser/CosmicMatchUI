@@ -4,6 +4,43 @@ angular.module('app.services', [])
 
     }])
 
+    .service('SavedUserProfileService', ['$http', function($http){
+        let service = {
+            getUserProfile: getUserProfile,
+            getCachedUser: getCachedUser,
+            makeUserProfile: makeUserProfile
+        }
+
+        let cachedUser;
+
+        function getCachedUser() {
+            return cachedUser;
+        }
+
+        function getUserProfile(auth0ProfileInfo) {
+ 
+            const config = {
+                params: {
+                    auth0ProfileInfo: auth0ProfileInfo
+                }
+            }
+
+
+            $http.get("https://cosmicmatch-api.herokuapp.com/user", config)
+            .then(function(response){
+                if (response.data) {
+                    cachedUser = response.data
+                }
+            }).catch(function(err){
+
+            }); 
+        }
+
+        function makeUserProfile(cosmicMatchProfileInfo) {
+
+        }
+    }])
+
     .service('TimeZoneService', ['$http', function ($http) {
         let service = {
             getTimeZone: getTimeZone
@@ -76,7 +113,7 @@ angular.module('app.services', [])
         }
     }])
 
-    .service('UserProfileService', [function () {
+    .service('UserProfileService', ['SavedUserProfileService', function (SavedUserProfileService) {
 
         let user = {
             month: 0,
@@ -120,6 +157,10 @@ angular.module('app.services', [])
 
             return n < 10 ? '0' + n : '' + n;
 
+        }
+
+        function makeUserProfile() {
+            SavedUserProfileService.makeUserProfile(user)
         }
 
     }])
@@ -197,7 +238,7 @@ angular.module('app.services', [])
           });
         }
       
-        function login() {
+        function login(cb) {
           var client = new Auth0Cordova(auth0Config);
       
           var options = {
@@ -212,6 +253,7 @@ angular.module('app.services', [])
               setSession(authResult);
               $rootScope.$apply();
             }
+            cb();
           });
         }
       
