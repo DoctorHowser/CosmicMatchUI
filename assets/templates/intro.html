@@ -4,7 +4,7 @@
     <button
     ng-if="!auth.isAuthenticated()"
     class="button button-block button-positive"
-    ng-click="auth.login()">
+    ng-click="auth.login(handleLogin)">
       Log In
   </button>
   

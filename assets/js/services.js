@@ -18,26 +18,37 @@ angular.module('app.services', [])
         }
 
         function getUserProfile(auth0ProfileInfo) {
- 
+            console.log('in getUserProfile')
             const config = {
                 params: {
                     auth0ProfileInfo: auth0ProfileInfo
                 }
             }
 
+            const id = auth0ProfileInfo.identites[0].user_id;
 
-            $http.get("https://cosmicmatch-api.herokuapp.com/user", config)
-            .then(function(response){
-                if (response.data) {
+            return $http.get(`http://localhost:5000/user/login/${id}`, config)
+                .then(function(response){
+                if(response.statusCode === 204) {
+                    //NOT YET CREATED
+                    makeUserProfile(auth0ProfileInfo);
+                } else if (response.data) {
                     cachedUser = response.data
                 }
-            }).catch(function(err){
-
-            }); 
+                }).catch(handleServerError); 
         }
 
         function makeUserProfile(cosmicMatchProfileInfo) {
+            const config = {
+                data: {
+                    auth0ProfileInfo: auth0ProfileInfo
+                }
+            }
 
+            return $http.post(`http://localhost:5000/user/regiser`, config)
+                .then(function(response){
+                    cachedUser = response.data;
+                }).catch(handleServerError)
         }
     }])
 
@@ -201,6 +212,7 @@ angular.module('app.services', [])
         var auth0 = require('auth0-js');
         var userProfile = {};
       
+
         var auth0Config = {
             clientId: 'Snr3F4W4r7RWJza26gkG7EnikNVxGqJd',
             domain: 'cosmicmatch.auth0.com',

@@ -194,26 +194,32 @@ function ($scope, $stateParams) {
 .controller('introCtrl', ['$scope', '$stateParams', 'Auth', 'SavedUserProfileService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, Auth) {
+function ($scope, $stateParams, Auth, SavedUserProfileService) {
 
     $scope.auth = Auth;
+    $scope.handleLogin = handleLogin;
 
-    if (!Auth.isAuthenticated()) {
-        Auth.login(handleLogin);
+    // if (!Auth.isAuthenticated()) {
+    //     Auth.login(handleLogin);
+    // }
+
+    function handleProfile(err, auth0Profile) {
+        console.log('in handleProfile')
+        //call server, check database for person
+        SavedUserProfileService.getUserProfile(auth0Profile).then(function(response){
+            //if exists, move on to dashboard        
+            //if not, move on to first time flow
+        }).catch(function(error) {
+
+        });
     }
 
     function handleLogin() {
+        console.log('in handleLogin')
         Auth.getProfile(handleProfile)
     }
 
-    function handleProfile(err, auth0Profile) {
-        //call server, check database for person
-
-        //if exists, move on to dashboard
-
-        //if not, move on to first time flow
-        SavedUserProfileService.getUserProfile(auth0ProfileInfo)
-    }
+  
 }])
    
 .controller('cosmicMatchTour1Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
