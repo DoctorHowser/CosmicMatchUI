@@ -19,7 +19,7 @@
         <p style="color:#000000;">(Lat: {{user.lat}}) (Lon: {{user.lon}})</p>
       </div>
     </div>
-    <a ui-sref="tabsController.createANewMatch_tab5()" id="confirmYourProfile-button34" style="font-size:20px;" class="button button-energized button-block">Save!</a>
+    <a ng-click="saveProfile()" id="confirmYourProfile-button34" style="font-size:20px;" class="button button-energized button-block">Save!</a>
     <a ui-sref="tabsController.setUpMyProfile()" id="confirmYourProfile-button41" style="font-size:14px;border-radius:0px 0px 0px 0px;" class="button button-positive button-small button-block">Edit Birth Time Info</a>
     <a ui-sref="tabsController.myProfileLocation()" id="confirmYourProfile-button43" style="font-size:14px;" class="button button-positive button-small button-block">Edit Birth Location Info</a>
   </ion-content>

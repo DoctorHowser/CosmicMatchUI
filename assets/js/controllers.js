@@ -23,8 +23,9 @@ function ($scope, $stateParams, $state, $timeout) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, UserProfileService) {
- $scope.user = UserProfileService.getUser()
-
+    console.log("in myProfileCtrl");
+    $scope.user = UserProfileService.getUser();
+    console.log($scope.user)
 }])
    
 .controller('confirmGetMyMatchCtrl', ['$scope', '$stateParams', '$state', 'UserProfileService', 'MatchProfileService', 'MatchResultService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -191,32 +192,44 @@ function ($scope, $stateParams) {
 
 }])
    
-.controller('introCtrl', ['$scope', '$stateParams', 'Auth', 'SavedUserProfileService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('introCtrl', ['$scope', '$stateParams', '$state', 'Auth', 'SavedUserProfileService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, Auth, SavedUserProfileService) {
+function ($scope, $stateParams, $state, Auth, SavedUserProfileService) {
 
     $scope.auth = Auth;
     $scope.handleLogin = handleLogin;
+    $scope.continueToApp = continueToApp;
 
-    // if (!Auth.isAuthenticated()) {
-    //     Auth.login(handleLogin);
-    // }
+    var hasProfile = false;
 
     function handleProfile(err, auth0Profile) {
-        console.log('in handleProfile')
         //call server, check database for person
         SavedUserProfileService.getUserProfile(auth0Profile).then(function(response){
-            //if exists, move on to dashboard        
+            if(response) {
+                //if exists, move on to dashboard
+                hasProfile = true;    
+            } else {
+                hasProfile = false;
             //if not, move on to first time flow
+            }
+            
         }).catch(function(error) {
-
+            Auth.logout()
         });
     }
 
     function handleLogin() {
         console.log('in handleLogin')
         Auth.getProfile(handleProfile)
+    }
+
+    function continueToApp() {
+        if (hasProfile) {
+            $state.go('tabsController.myProfile')
+        } else {
+            $state.go('welcome')
+        }
     }
 
   
@@ -299,7 +312,8 @@ function ($scope, $stateParams, $state, MatchProfileService, TimeZoneConfig) {
     $scope.search = {
         birthTime : "",
         birthDate : "",
-        timeZone : ""
+        timeZone : "",
+        name : ""
     }
     
     $scope.options = TimeZoneConfig.getTimeZones();
@@ -307,7 +321,8 @@ function ($scope, $stateParams, $state, MatchProfileService, TimeZoneConfig) {
 
     $scope.submit = function() {
         const date = $scope.search.birthDate,
-        time = $scope.search.birthTime;
+        time = $scope.search.birthTime,
+        name = $scope.search.name;
         
 
         
@@ -320,7 +335,8 @@ function ($scope, $stateParams, $state, MatchProfileService, TimeZoneConfig) {
             month: dateTime.getMonth() +1,
             day: dateTime.getDate(),
             year: dateTime.getFullYear(),
-            timezone: $scope.search.timeZone
+            timezone: $scope.search.timeZone,
+            name : name
         }
         
         MatchProfileService.setMatch(matchObj);
@@ -594,12 +610,23 @@ function ($scope, $stateParams, $state, uiGmapGoogleMapApi, UserProfileService, 
     }
 }])
    
-.controller('confirmYourProfileCtrl', ['$scope', '$stateParams', '$state', '$timeout', 'UserProfileService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('confirmYourProfileCtrl', [
+    '$scope', '$stateParams', '$state', '$timeout', 'UserProfileService', 'SavedUserProfileService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state, $timeout, UserProfileService) {
+function ($scope, $stateParams, $state, $timeout, UserProfileService, SavedUserProfileService) {
 
-    $scope.user = UserProfileService.getUser()
+    $scope.user = UserProfileService.getUser();
+
+    $scope.saveProfile = saveProfile;
+
+    function saveProfile() {
+        SavedUserProfileService.saveUser($scope.user).then(function(response){
+            $state.go('tabsController.createANewMatch_tab5')
+        }).catch(function(err) {
+
+        });
+    }
 
     
 }])

@@ -7,17 +7,17 @@
       <div class="spacer" style="width: 300px; height: 31px;"></div>
       <label class="item item-input" id="createANewMatch-input19">
         <span class="input-label">Name</span>
-        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Name" ng-model="search.name" required>
       </label>
       <div class="spacer" style="width: 300px; height: 24px;"></div>
       <label class="item item-input" id="createANewMatch-input15">
         <span class="input-label" ng-if="!search.birthDate">Birthdate</span>          
-        <input type="date" placeholder="Birthdate" ng-model="search.birthDate">
+        <input type="date" placeholder="Birthdate" ng-model="search.birthDate" required>
       </label>
       <div class="spacer" style="width: 300px; height: 26px;"></div>
       <label class="item item-input" id="createANewMatch-input16">
         <span class="input-label" ng-if="!search.birthTime">Birthtime</span>                  
-        <input type="time" placeholder="HH:MM AM/PM" ng-model="search.birthTime" />
+        <input type="time" placeholder="HH:MM AM/PM" ng-model="search.birthTime" required/>
       </label>
       <input type="submit" style="visibility: hidden" />      
     </form>

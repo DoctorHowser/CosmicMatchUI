@@ -4,51 +4,70 @@ angular.module('app.services', [])
 
     }])
 
-    .service('SavedUserProfileService', ['$http', function($http){
+    .service('SavedUserProfileService', ['$http', 'UserProfileService', function($http, UserProfileService){
+
+        let cachedUser = {};
+        let auth0Info = {};
+
         let service = {
             getUserProfile: getUserProfile,
             getCachedUser: getCachedUser,
-            makeUserProfile: makeUserProfile
+            saveUser: saveUser
         }
 
-        let cachedUser;
+        return service;
 
+        
         function getCachedUser() {
             return cachedUser;
         }
 
+        function getAuth0Info() {
+            return auth0Info;
+        }
+
+        function setAuth0Info(info) {
+            auth0Info = info;
+        }
+
         function getUserProfile(auth0ProfileInfo) {
+
+            setAuth0Info(auth0ProfileInfo);
             console.log('in getUserProfile')
-            const config = {
-                params: {
-                    auth0ProfileInfo: auth0ProfileInfo
-                }
-            }
-
-            const id = auth0ProfileInfo.identites[0].user_id;
-
-            return $http.get(`http://localhost:5000/user/login/${id}`, config)
+            const id = auth0ProfileInfo.sub;
+            return $http.get(`http://localhost:5000/user/login`)
                 .then(function(response){
-                if(response.statusCode === 204) {
-                    //NOT YET CREATED
-                    makeUserProfile(auth0ProfileInfo);
-                } else if (response.data) {
-                    cachedUser = response.data
-                }
+                    if(response.status === 204) {
+                        //NOT YET CREATED
+                        // makeUserProfile(auth0ProfileInfo);
+                        return false;
+                    } else if (response.data) {
+                        const {userBirthData, userId, userMatches} = response.data;
+                        UserProfileService.setUser(userBirthData);
+                        //setMatches
+                        //setID?
+                        return true;
+                    }
                 }).catch(handleServerError); 
         }
 
-        function makeUserProfile(cosmicMatchProfileInfo) {
+        function saveUser(cosmicMatchProfileInfo) {
+            const auth0Info = getAuth0Info();
+            cosmicMatchProfileInfo.auth0id = auth0Info.sub;
+
             const config = {
-                data: {
-                    auth0ProfileInfo: auth0ProfileInfo
-                }
+                data: cosmicMatchProfileInfo
             }
 
-            return $http.post(`http://localhost:5000/user/regiser`, config)
+            return $http.post(`http://localhost:5000/user/create`, config)
                 .then(function(response){
                     cachedUser = response.data;
+                    return cachedUser;
                 }).catch(handleServerError)
+        }
+
+        function handleServerError(errResponse) {
+            console.log(errResponse)
         }
     }])
 
@@ -88,7 +107,8 @@ angular.module('app.services', [])
             timezone: "",
             lat: 0,
             lon: 0,
-            location: ""
+            location: "",
+            name: ""
         }
 
         let service = {
@@ -110,6 +130,7 @@ angular.module('app.services', [])
             match.lat = userInfo.lat || match.lat;
             match.lon = userInfo.lon || match.lon;
             match.location = userInfo.location || match.location;
+            match.name = userInfo.name || match.name
 
             console.log(match)
         }
@@ -124,7 +145,7 @@ angular.module('app.services', [])
         }
     }])
 
-    .service('UserProfileService', ['SavedUserProfileService', function (SavedUserProfileService) {
+    .service('UserProfileService', [function () {
 
         let user = {
             month: 0,
@@ -170,10 +191,6 @@ angular.module('app.services', [])
 
         }
 
-        function makeUserProfile() {
-            SavedUserProfileService.makeUserProfile(user)
-        }
-
     }])
 
     .service('MatchResultService', ['$http', '$q', function ($http, $q) {
@@ -191,7 +208,7 @@ angular.module('app.services', [])
             cache = {};
 
 
-            return $http.post("https://cosmicmatch-api.herokuapp.com/comparison", { personA: personA, personB: personB })
+            return $http.post("http://localhost:5000/comparison", { personA: personA, personB: personB })
                 .then(function (result) {
                     cache = result.data
                     return cache
@@ -207,7 +224,7 @@ angular.module('app.services', [])
 
     }])
 
-    .factory('Auth', function($rootScope) {
+    .factory('Auth', function($rootScope, $http) {
         var Auth0Cordova = require('@auth0/cordova');
         var auth0 = require('auth0-js');
         var userProfile = {};
@@ -254,7 +271,8 @@ angular.module('app.services', [])
           var client = new Auth0Cordova(auth0Config);
       
           var options = {
-            scope: 'openid profile offline_access'
+            scope: 'openid profile offline_access',
+            audience: 'https://cosmicmatch-api.herokuapp.com/'
           };
       
           client.authorize(options, function(err, authResult) {
@@ -262,8 +280,9 @@ angular.module('app.services', [])
               throw new Error(err);
             }
             if (authResult && authResult.accessToken && authResult.idToken) {
-              setSession(authResult);
-              $rootScope.$apply();
+                $http.defaults.headers.common['Authorization'] = `Bearer ${authResult.accessToken}`
+                setSession(authResult);
+                $rootScope.$apply();
             }
             cb();
           });
@@ -274,6 +293,8 @@ angular.module('app.services', [])
           window.localStorage.removeItem('access_token');
           window.localStorage.removeItem('id_token');
           window.localStorage.removeItem('expires_at');
+          $http.defaults.headers.common['Authorization'] = ``
+
         }
       
         return {
