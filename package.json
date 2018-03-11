@@ -17,6 +17,7 @@
     "cordova-plugin-customurlscheme": "^4.3.0",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-inappbrowser": "^1.7.2",
+    "cordova-plugin-inapppurchase": "^1.2.0",
     "cordova-plugin-keyboard": "^1.2.0",
     "cordova-plugin-safariviewcontroller": "^1.5.2",
     "cordova-plugin-splashscreen": "^4.1.0",
@@ -56,7 +57,8 @@
         "ANDROID_PATHPREFIX": "/cordova/com.astro.cosmicmatch/callback"
       },
       "cordova-plugin-safariviewcontroller": {},
-      "cordova-plugin-keyboard": {}
+      "cordova-plugin-keyboard": {},
+      "cordova-plugin-inapppurchase": {}
     },
     "platforms": [
       "ios"
