@@ -45,6 +45,7 @@ angular.module('app.services', [])
                         const {userBirthData, userId, userMatches} = response.data;
                         UserProfileService.setUser(userBirthData);
                         //setMatches
+
                         //setID?
                         return true;
                     }
@@ -206,11 +207,9 @@ angular.module('app.services', [])
 
         function setMatch(personA, personB) {
             cache = {};
-
-
             return $http.post("http://localhost:5000/comparison", { personA: personA, personB: personB })
-                .then(function (result) {
-                    cache = result.data
+                .then(function ({data} = result) {
+                    cache = data; 
                     return cache
                 })
         }
@@ -222,6 +221,43 @@ angular.module('app.services', [])
             return cache
         }
 
+    }])
+
+    .service('UserMatchesService', [function(){
+        let matches = [];
+
+        class Match {
+            constructor(matchData) {
+                this.matchData = matchData
+            }
+            dummy() {
+                console.log(this)
+            }
+        }
+
+        let service = {
+            setMatches : setMatches,
+            getMatches : getMatches
+        }
+
+        return service;
+
+        function getMatches() {
+            if (matches.length) {
+                return matches;
+            } else {
+                return null
+            }
+        }
+
+        function setMatches(matches) {
+            matches = [];
+            array.forEach(match => {
+                let newMatch = new Match (match);
+                matches.push(newMatch);
+            });
+            return matches;
+        }
     }])
 
     .factory('Auth', function($rootScope, $http) {
