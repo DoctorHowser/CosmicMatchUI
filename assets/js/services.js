@@ -4,7 +4,8 @@ angular.module('app.services', [])
 
     }])
 
-    .service('SavedUserProfileService', ['$http', 'UserProfileService', function($http, UserProfileService){
+    .service('SavedUserProfileService', ['$http', 'UserProfileService', 'UserMatchesService', 
+    function($http, UserProfileService, UserMatchesService){
 
         let cachedUser = {};
         let auth0Info = {};
@@ -45,7 +46,7 @@ angular.module('app.services', [])
                         const {userBirthData, userId, userMatches} = response.data;
                         UserProfileService.setUser(userBirthData);
                         //setMatches
-
+                        UserMatchesService.setMatches(userMatches)
                         //setID?
                         return true;
                     }
@@ -69,6 +70,7 @@ angular.module('app.services', [])
 
         function handleServerError(errResponse) {
             console.log(errResponse)
+            //alert error?
         }
     }])
 
@@ -194,13 +196,14 @@ angular.module('app.services', [])
 
     }])
 
-    .service('MatchResultService', ['$http', '$q', function ($http, $q) {
+    .service('MatchResultService', ['$http', '$q', 'UserMatchesService', function ($http, $q, UserMatchesService) {
 
         let cache = {}
 
         let service = {
             setMatch: setMatch,
-            getMatch: getMatch
+            getMatch: getMatch,
+            setCurrentMatch: setCurrentMatch
         }
 
         return service;
@@ -209,26 +212,32 @@ angular.module('app.services', [])
             cache = {};
             return $http.post("http://localhost:5000/comparison", { personA: personA, personB: personB })
                 .then(function ({data} = result) {
-                    cache = data; 
+                    setCurrentMatch(data);
+                    UserMatchesService.addNewMatch(cache);
                     return cache
                 })
         }
 
-
+        function setCurrentMatch(match) {
+            cache = match;
+            return cache;
+        }
 
         function getMatch() {
-            debugger;
             return cache
         }
 
     }])
 
     .service('UserMatchesService', [function(){
-        let matches = [];
+        let matchesArray = [];
 
         class Match {
             constructor(matchData) {
-                this.matchData = matchData
+                this.name = matchData.name || "No Match Yet Made!",
+                this.percent =  matchData.percent || "No Match Yet Made!",
+                this.reading = matchData.reading || "No Match Yet Made!"
+                this.id = matchData.id || "No Match Yet Made!"
             }
             dummy() {
                 console.log(this)
@@ -237,26 +246,33 @@ angular.module('app.services', [])
 
         let service = {
             setMatches : setMatches,
-            getMatches : getMatches
+            getMatches : getMatches,
+            addNewMatch : addNewMatch
         }
 
         return service;
 
         function getMatches() {
-            if (matches.length) {
-                return matches;
+            if (matchesArray.length) {
+                return matchesArray;
             } else {
                 return null
             }
         }
 
         function setMatches(matches) {
-            matches = [];
-            array.forEach(match => {
+            matchesArray = [];
+            matches.forEach(match => {
+
                 let newMatch = new Match (match);
-                matches.push(newMatch);
+                matchesArray.push(newMatch);
             });
-            return matches;
+            return matchesArray;
+        }
+
+        function addNewMatch(match) {
+            let newMatch = new Match(match);
+            matchesArray.push(newMatch);
         }
     }])
 

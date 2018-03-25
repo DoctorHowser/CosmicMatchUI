@@ -49,16 +49,21 @@ function ($scope, $stateParams, $state, UserProfileService, MatchProfileService,
     }
 }])
    
-.controller('savedMatchesCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+.controller('savedMatchesCtrl', ['$scope', '$stateParams', '$state', 'MatchResultService', 'UserMatchesService',
+function ($scope, $stateParams, $state, MatchResultService, UserMatchesService) {
 
     $scope.isDelete = false;
     // $scope.isReorder = false;
     $scope.showDeletePrompt = false;
     $scope.deletingMatch = null;
+    $scope.matches = [];
+
     
+    $scope.selectMatch = function(match) {
+        MatchResultService.setCurrentMatch(match);
+        $state.go('tabsController.yourMatchResult', match)
+    }
+
     $scope.toggleDelete = function () {
         if($scope.isReorder) {$scope.isReorder = !$scope.isReorder}
         $scope.isDelete = !$scope.isDelete
@@ -88,38 +93,19 @@ function ($scope, $stateParams) {
         
     }
     
-    $scope.matches = [
-        {
-            name: "Roger",
-            sign: "\u2648",
-            rating: 72,
-            id: 1
-        },
-        {
-            name: "Kenneth",
-            sign: "\u264B",
-            rating: 75,
-            id: 2
-        },
-        {
-            name: "Gloria",
-            sign: "\u2652",
-            rating: 81,
-            id: 3
-        },
-        {
-            name: "Peter",
-            sign: "\u2652",
-            rating: 69,
-            id: 3
-        },
-        {
-            name: "Jennifer",
-            sign: "\u2652",
-            rating: 74,
-            id: 3
-        },
-        ];
+    function getMatches() {
+        $scope.matches = UserMatchesService.getMatches();
+    }
+
+    getMatches();
+
+    // {
+    //     name: "Roger",
+    //     sign: "\u2648",
+    //     rating: 72,
+    //     id: 1
+    // },
+    
     
 }])
    
@@ -131,6 +117,7 @@ function ($scope, $state, $stateParams, $ionicHistory, MatchResultService) {
     $scope.$on("$ionicView.beforeEnter", function () {
         $ionicHistory.clearCache();
         $ionicHistory.clearHistory();
+        
         $scope.match = MatchResultService.getMatch();
 
     }); 
