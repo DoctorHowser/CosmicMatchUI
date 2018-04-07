@@ -3,12 +3,15 @@
     <div id="savedMatches-markdown14" style="text-align:center;" class="show-list-numbers-and-dots">
       <p style="color:#FFFFFF;font-size:15px;">View or delete saved matches</p>
     </div>
-    <ion-list id="savedMatches-list1" show-delete="isDelete">
-      <ion-item class="energized" id="savedMatches-list-item8" ng-click="selectMatch(match)" ui-sref="tabsController.yourMatchResult()" ng-repeat="match in matches">
-        {{match.name}} -- {{match.percent}}
+    <ion-scroll style="height: 550px">
+      <ion-list id="savedMatches-list1" show-delete="isDelete">
+        <ion-item class="energized" id="savedMatches-list-item8" ng-click="selectMatch(match)" ui-sref="tabsController.yourMatchResult()" ng-repeat="match in matches">
+          {{match.name}} -- {{match.percent}}
         <ion-delete-button class="ion-minus-circled" ng-click="promptDeleteMatch(match)"></ion-delete-button>
       </ion-item>
     </ion-list>
+  </ion-scroll>
+    
    <div id="savedMatches-container6" ng-show="showDeletePrompt">
       <button id="savedMatches-button44" ng-click="deleteMatch()" class="button button-positive button-block">Delete {{deletingMatch.name}}</button>
       <button id="savedMatches-button45" ng-click="cancelDelete()" class="button button-positive button-block">Cancel</button>
