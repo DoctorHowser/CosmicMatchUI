@@ -1,5 +1,5 @@
 {
-  "name": "COSMICMATCHUI",
+  "name": "COSMIC_MATCH_UI",
   "version": "0.0.1",
   "description": "Cosmic Match!",
   "scripts": {
@@ -12,6 +12,7 @@
     "angular-auth0": "^2.0.0-beta.2",
     "auth0-js": "^9.0.2",
     "browserify": "^14.5.0",
+    "cordova-android": "7.0.0",
     "cordova-ios": "4.5.4",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-customurlscheme": "^4.3.0",
@@ -31,6 +32,8 @@
     "gulp-minify-css": "^0.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
+    "ionic": "^3.20.0",
+    "ionic-angular": "^1.3.5",
     "ionic-plugin-keyboard": "^2.2.1"
   },
   "devDependencies": {
@@ -46,7 +49,6 @@
       "cordova-plugin-console": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-statusbar": {},
       "cordova-plugin-whitelist": {},
       "ionic-plugin-keyboard": {},
       "cordova-plugin-inappbrowser": {},
@@ -58,10 +60,12 @@
       },
       "cordova-plugin-safariviewcontroller": {},
       "cordova-plugin-keyboard": {},
-      "cordova-plugin-inapppurchase": {}
+      "cordova-plugin-inapppurchase": {},
+      "cordova-plugin-statusbar": {}
     },
     "platforms": [
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
