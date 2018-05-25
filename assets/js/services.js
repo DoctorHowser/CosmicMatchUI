@@ -4,6 +4,41 @@ angular.module('app.services', [])
 
     }])
 
+    .service('AppPurchaseService', [function(){
+        const itemIds = [];
+        let products;
+
+        const service = {
+            getProducts,
+            buyProduct
+        }
+        return service;
+
+        function getProducts() {
+            return inAppPurchase.getProducts(itemIds).then((response) => {
+                products = response;
+            }).catch((err) => {
+    
+            })
+        }
+
+        function buyProduct(productId) {
+            return inAppPurchase.buy(productId).then(data => {
+
+                //for android
+                return inAppPurchase.consume(data.type, data.receipt, data.signature);
+            }).catch(err => {
+                
+            })
+        }
+
+        function redeem() {
+            //use 1 currency
+        }
+
+        
+    }])
+
     .service('SavedUserProfileService', ['$http', 'UserProfileService', 'UserMatchesService', 
     function($http, UserProfileService, UserMatchesService){
 
